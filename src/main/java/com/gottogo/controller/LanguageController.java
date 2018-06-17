@@ -51,10 +51,17 @@ public class LanguageController {
 	}
 	
 	@RequestMapping(value="/ItemLanguages/{id}",  method=RequestMethod.POST)
-	public String edit2(@PathVariable("id") long id, @RequestParam("name") String name){
+	public String salvarAlteracao(@PathVariable("id") long id, @RequestParam("name") String name){
 		Language lang = rep.findById(id);
 		lang.setName(name);
 		rep.save(lang);
+		return "redirect:/ItemLanguages";
+	}
+	
+	@RequestMapping(value="/ItemLanguages/{id}/delete", method=RequestMethod.GET)
+	public String deletar(@PathVariable("id") long id){
+		Language lang = rep.findById(id);
+		rep.deleteById(lang.getId());
 		return "redirect:/ItemLanguages";
 	}
 	

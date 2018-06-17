@@ -124,7 +124,7 @@ tr:hover {
 				<tr th:each="lang : ${lang}">
 					<td th:text="${lang.id}"></td>
 					<td><a th:text="${lang.name}"
-						th:href="@{'/ItemLanguages/' + ${lang.id}}"></a></td>
+					th:href="@{'/ItemLanguages/' + ${lang.id}}"></a></td>
 					<td>0</td>
 					<td>7</td>
 				</tr>
@@ -170,8 +170,7 @@ tr:hover {
 						<tr th:each="lang : ${lang}">
 							<th th:text="${lang.name}"></th>
 							<td><a th:href="@{'/ItemLanguages/' + ${lang.id}}"><i class="fas fa-pencil-alt"></i></a></td>
-							<td><a data-dismiss="modal" data-toggle="modal"
-								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
+							<td><a th:href="@{'/ItemLanguages/' + ${lang.id} + '/delete'}"><i class="fas fa-trash"></i></a></td>
 						</tr>
 					</table>
 				</div>
