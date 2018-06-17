@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>GotToGo | Ajudando programadores</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+.card img {
+	width: 150px;
+	height: 150px;
+	padding: 2px;
+	margin: 5px;
+}
+
+.card {
+	width: 250px;
+	padding: 3px;
+	margin: 2px 3px;
+	text-align: center;
+	align-items: center;
+}
+
+@media screen and (max-width: 580px) {
+	.card {
+		width: 100%;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: #FB971F;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #FDC00F;
+}
+
+.user, .lead {
+	color: #FDC00F;
+}
+
+.user:hover {
+	color: #FB971F;
+}
+
+td {
+	padding: 2px 10px;
+	text-align: center;
+}
+
+tr:hover {
+	color: #FB971F;
+}
+
+.td:hover {
+	background-color: #FB971F;
+	color: #ffffff;
+	border-radius: 5px;
+}
+</style>
+<!-- Bootstrap CSS -->
+<link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="jumbotron bg-dark text-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h3>Escolha a linguagem em que vc precisa de ajuda</h3>
+					<p class="lead">Temos todos os tipos de linguagem para você</p>
+				</div>
+				<div class="col-sm-4 text-center user">
+					<img src="LogoGotToGo-04.png" height="70px">
+					<div class="dropdown">
+						<p class="dropdown-toggle" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user-circle" aria-hidden="true"></i> Lucas Hubert
+						</p>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#"><i
+								class="fas fa-sign-out-alt"></i>&nbsp&nbsp Sair</a>
+						</div>
+					</div>
+				</div>
+				<br>
+				<!-- area do moderador -->
+				<a name="" id="" class="btn btn-primary" href="#" role="button"
+					data-toggle="modal" data-target="#ListViewManager"><i
+					class="fas fa-cog"></i> &nbspGerenciar</a>
+				<!-- Fim area moderador -->
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="form-group">
+			<div class="row">
+				<input type="text" class="form-control col-sm-10 mt-3" name=""
+					id="Pesquisar" aria-describedby="helpId" placeholder="Pesquisar">
+				<button type="submit" class="form-control col-sm-2 mt-3"
+					id="btnSearch">
+					<i class="fas fa-search "></i>
+				</button>
+			</div>
+		</div>
+		<table class="table">
+			<thead class="text-center">
+				<tr>
+					<th scope="col"><i class="fas fa-hashtag"></i></th>
+					<th scope="col"><i class="fas fa-book-open"></i></th>
+					<th scope="col"><i class="fas fa-eye"></i></th>
+					<th scope="col"><i class="fas fa-heart"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lang : ${lang}">
+					<td th:text="${lang.id}"></td>
+					<td><a th:text="${lang.name}"
+						th:href="@{'/ItemLanguages/' + ${lang.id}}"></a></td>
+					<td>0</td>
+					<td>7</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="bg-dark text-center text-light p-5 footer mt-5">
+		<img src="LogoGotToGo-02.png" height="80px;">
+		<h6>Ajudando programadores</h6>
+		<p>
+			<i class="fas fa-registered"></i> Todos os direitos reservados
+		</p>
+		<p>
+			<i class="fas fa-code"></i> Desenvolvido por Lucas Hubert, Patrik
+			Reisner e Jacson Pessoa
+		</p>
+	</div>
+
+	<!-- Modais -->
+	<!-- Modal CRUD -->
+	<div class="modal fade" id="ListViewManager" tabindex="-1"
+		role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modelTitleId">Gerenciar Lista de
+						Linguagens</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span> <i class="fas fa-times    "></i></span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<a name="" id="" class="btn btn-primary m-2" href="#" role="button"
+						data-dismiss="modal" data-toggle="modal" data-target="#AddItem"><i
+						class="fas fa-plus"></i> &nbspAdicionar</a>
+					<table class="table">
+						<tr>
+							<th>Nome</th>
+							<td>Editar</td>
+							<td>Excluir</td>
+						</tr>
+						<tr th:each="lang : ${lang}">
+							<th th:text="${lang.name}"></th>
+							<td><a th:href="@{'/ItemLanguages/' + ${lang.id}}"><i class="fas fa-pencil-alt"></i></a></td>
+							<td><a data-dismiss="modal" data-toggle="modal"
+								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<!-- Modal CRUD -->
+	<div class="modal fade" id="AddItem" tabindex="-1" role="dialog"
+		aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modelTitleId">Adicionar novo
+						tutorial</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span> <i class="fas fa-times"></i></span>
+					</button>
+				</div>
+				<form method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="title">Nome da Linguagem</label> <input type="text"
+								class="form-control" name="name" id="title"
+								aria-describedby="helpId" placeholder="Linguagem"> <small
+								id="helpId" class="form-text text-muted">O texto que
+								aparecerá na lista</small>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">
+							<i class="fa fa-times" aria-hidden="true"></i> Cancelar
+						</button>
+						<button type="submit" class="btn btn-primary">
+							<i class="fas fa-save"></i> Salvar
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="EditItem" tabindex="-1" role="dialog"
+		aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modelTitleId">Editar novo tutorial</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span> <i class="fas fa-times"></i></span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<div class="form-group">
+							<label for="title">Nome da Linguagem</label> <input type="text"
+								class="form-control" name="name" id="title"
+								aria-describedby="helpId" placeholder="Linguagem"> <small
+								id="helpId" class="form-text text-muted">O texto que
+								aparecerá na lista</small>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">
+							<i class="fa fa-times" aria-hidden="true"></i> Cancelar
+						</button>
+						<button type="submit" class="btn btn-primary">
+							<i class="fas fa-save"></i> Salvar
+						</button>
+					</div>
+<!-- 				<div th:each="langId : ${langById}"> -->
+<!-- 					<div> -->
+<!-- 						<div class="modal-body"> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label for="title">Nome da Linguagem</label> <input type="text" -->
+<!-- 									class="form-control" th:value="${langId.name}" name="name" id="title" -->
+<!-- 									aria-describedby="helpId" placeholder="Linguagem"> <small -->
+<!-- 									id="helpId" class="form-text text-muted">O texto que -->
+<!-- 									aparecerá na lista</small> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="modal-footer"> -->
+<!-- 							<button type="button" class="btn btn-secondary" -->
+<!-- 								data-dismiss="modal"> -->
+<!-- 								<i class="fa fa-times" aria-hidden="true"></i> Cancelar -->
+<!-- 							</button> -->
+<!-- 							<button type="submit" class="btn btn-primary"> -->
+<!-- 								<i class="fas fa-save"></i> Salvar -->
+<!-- 							</button> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal CRUD -->
+	<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog"
+		aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content text-center">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modelTitleId">Confirmar exclusão</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span> <i class="fas fa-times    "></i></span>
+					</button>
+				</div>
+				<h5 class="m-3">Tem certeza?</h5>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">
+						<i class="fa fa-times" aria-hidden="true"></i> Cancelar
+					</button>
+					<button type="button" class="btn btn-primary">
+						<i class="fas fa-trash"></i> Confirmar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>

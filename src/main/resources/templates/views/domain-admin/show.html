@@ -1,0 +1,15 @@
+<html>
+
+<body>
+	<h3><a href="/">Voltar!</a></h3>
+	<h1> Hiiii from language folder </h1>
+
+	<div th:each="user : ${user}">
+		<div class="row">
+			<p><span th:text="${user.username}"></span></p>
+			<p><span th:text="${user.email}"></span></p>
+		</div>
+	</div>
+
+</body>
+</html>
