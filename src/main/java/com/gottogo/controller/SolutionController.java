@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gottogo.model.Solution;
@@ -23,15 +24,13 @@ public class SolutionController {
 	@Autowired
 	public SolutionRepository rep;
 	
-	@RequestMapping(value="/ItemLanguages/{id}/items", method=RequestMethod.POST)
-	public String edit(Solution solu, @PathVariable("id") long id){
-		Language lang = repLang.findById(id);
-		solu.setLanguage(lang);
-		rep.save(solu);
-		return "redirect:/ItemLanguages/{id}/items";
+	@RequestMapping(value="/items", method=RequestMethod.GET)
+	public String listViewLanguages(){
+	
+		return "view/ItemView";
 	}
 	
-	@RequestMapping(value="/ItemLanguages/{id}/items", method=RequestMethod.GET)
+	@RequestMapping(value="items/{id}", method=RequestMethod.GET)
 	public ModelAndView listViewLanguages(@PathVariable("id") long id){
 	
 		Language lang = repLang.findById(id);
@@ -42,6 +41,21 @@ public class SolutionController {
 		mv.addObject("solution", solution);
 		return mv;
 	}
+//	@RequestMapping(value="/items/{id}", method=RequestMethod.GET)
+//	public ModelAndView edit(@PathVariable("id") long id){
+//		Language lang = repLang.findById(id);
+//		ModelAndView mv = new ModelAndView("views/ItemView");
+//		mv.addObject("findById", lang);
+//		return mv;
+//	}
+//	
+//	@RequestMapping(value="/items/{id}",  method=RequestMethod.POST)
+//	public String salvarAlteracao(@PathVariable("id") long id, @RequestParam("name") String name){
+//		Language lang = repLang.findById(id);
+//		lang.setName(name);
+//		repLang.save(lang);
+//		return "redirect:/ItemLanguages";
+//	}
 	
 	
 //	@RequestMapping(value="items/{id}", method=RequestMethod.GET)

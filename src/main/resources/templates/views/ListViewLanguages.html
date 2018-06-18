@@ -79,7 +79,7 @@ tr:hover {
 					<p class="lead">Temos todos os tipos de linguagem para você</p>
 				</div>
 				<div class="col-sm-4 text-center user">
-					<img src="images//LogoGotToGo-04.png" height="70px">
+					<img src="LogoGotToGo-04.png" height="70px">
 					<div class="dropdown">
 						<p class="dropdown-toggle" id="dropdownMenuButton"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,7 +124,7 @@ tr:hover {
 				<tr th:each="lang : ${lang}">
 					<td th:text="${lang.id}"></td>
 					<td><a th:text="${lang.name}"
-					th:href="@{'/ItemLanguages/' + ${lang.id} +'/items'}"></a></td>
+					th:href="@{'/items/' + ${lang.id}}"></a></td>
 					<td>0</td>
 					<td>7</td>
 				</tr>
@@ -132,7 +132,7 @@ tr:hover {
 		</table>
 	</div>
 	<div class="bg-dark text-center text-light p-5 footer mt-5">
-		<img src="images/LogoGotToGo-02.png" height="80px;">
+		<img src="LogoGotToGo-02.png" height="80px;">
 		<h6>Ajudando programadores</h6>
 		<p>
 			<i class="fas fa-registered"></i> Todos os direitos reservados
@@ -231,27 +231,27 @@ tr:hover {
 						<span> <i class="fas fa-times"></i></span>
 					</button>
 				</div>
-<!-- 				<div th:each="langId : ${langById}"> -->
-<!-- 					<div> -->
-<!-- 						<div class="modal-body"> -->
-<!-- 							<div class="form-group"> -->
-<!-- 								<label for="title">Nome da Linguagem</label> <input type="text" -->
-<!-- 									class="form-control" th:value="${langId.name}" name="name" id="title" -->
-<!-- 									aria-describedby="helpId" placeholder="Linguagem"> <small -->
-<!-- 									id="helpId" class="form-text text-muted">O texto que -->
-<!-- 									aparecerá na lista</small> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="modal-footer"> -->
-<!-- 							<button type="button" class="btn btn-secondary" -->
-<!-- 								data-dismiss="modal"> -->
-<!-- 								<i class="fa fa-times" aria-hidden="true"></i> Cancelar -->
-<!-- 							</button> -->
-<!-- 							<button type="submit" class="btn btn-primary"> -->
-<!-- 								<i class="fas fa-save"></i> Salvar -->
-<!-- 							</button> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
+				<div th:each="langId : ${findById}">
+					<div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="title">Nome da Linguagem</label> <input type="text"
+									class="form-control" th:value="${langId.name}" name="nameinput" id="title"
+									aria-describedby="helpId" placeholder="Linguagem"> <small
+									id="helpId" class="form-text text-muted">O texto que
+									aparecerá na lista</small>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">
+								<i class="fa fa-times" aria-hidden="true"></i> Cancelar
+							</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fas fa-save"></i> Salvar
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

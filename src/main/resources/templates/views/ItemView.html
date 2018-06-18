@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>GotToGo | Ajudando programadores</title>
 <!-- Required meta tags -->
@@ -68,9 +68,10 @@ tr:hover {
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					
-						<h3>Agora que você escolheu</h3><h3 th:text="${lang.name}"></h3>
-						<p class="lead">pode escolher um tutorial</p>
+					<h3>Agora que você escolheu</h3>
+					<h3 th:text="${lang.name}"></h3>
+					,
+					<p class="lead">pode escolher um tutorial</p>
 				</div>
 				<div class="col-sm-4 text-center user">
 					<img src="LogoGotToGo-04.png" height="70px">
@@ -117,10 +118,10 @@ tr:hover {
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="solution : solution">
+				<tr th:each="solution : ${solution}">
 					<td th:text="${solution.id}"></td>
-					<td><a th:text="${solution.tittle}"
-						th:href="@{'/ItemLanguages/' + ${Lang.id}}"></a></td>
+					<td><a th:text="${solution.title}"
+						th:href="@{'/tutorial/' + ${solution.id}}"></a></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -159,9 +160,16 @@ tr:hover {
 					<a name="" id="" class="btn btn-primary m-2" href="#" role="button"
 						data-dismiss="modal" data-toggle="modal" data-target="#AddItem"><i
 						class="fas fa-plus"></i> &nbspAdicionar</a>
+					<div class="row">
+<!-- 						<form method="post"> -->
+<!-- 							Nome: <input type="text" th:value="${findById.name}" name="name"> -->
+<!-- 							<button type="submit">Salvar</button> -->
+<!-- 						</form> -->
+
+					</div>
 					<table class="table">
 						<tr>
-							<th>Titulo</th>
+							<th>Nome</th>
 							<td>Editar</td>
 							<td>Excluir</td>
 						</tr>
@@ -219,18 +227,17 @@ tr:hover {
 						<span> <i class="fas fa-times"></i></span>
 					</button>
 				</div>
-				<form method="post">
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="title">Titulo</label> <input type="text"
-							class="form-control" name="title" id="title"
+							class="form-control" name="titleInput" id="title"
 							aria-describedby="helpId" placeholder="Titulo do Tutorial">
 						<small id="helpId" class="form-text text-muted">O texto
 							que aparecerá na lista</small>
 					</div>
 					<div class="form-group">
 						<label for="content">Conteúdo do tutorial</label>
-						<textarea class="form-control" name="description" id="description"
+						<textarea class="form-control" name="contentInput" id="content"
 							rows="5"></textarea>
 					</div>
 				</div>
@@ -239,11 +246,10 @@ tr:hover {
 						data-dismiss="modal">
 						<i class="fa fa-times" aria-hidden="true"></i> Cancelar
 					</button>
-					<button type="submit" class="btn btn-primary">
+					<button type="button" class="btn btn-primary">
 						<i class="fas fa-save"></i> Salvar
 					</button>
 				</div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -266,8 +272,8 @@ tr:hover {
 						data-dismiss="modal">
 						<i class="fa fa-times" aria-hidden="true"></i> Cancelar
 					</button>
-					<button type="submit" class="btn btn-primary">
-							<i class="fas fa-save"></i> Salvar
+					<button type="button" class="btn btn-primary">
+						<i class="fas fa-trash"></i> Confirmar
 					</button>
 				</div>
 			</div>

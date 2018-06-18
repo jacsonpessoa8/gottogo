@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>GotToGo | Ajudando programadores</title>
     <!-- Required meta tags -->
@@ -53,7 +54,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
-                    <h3>Titulo do Tutorial</h3>
+                    <h3 th:text="${solution.title}"></h3>
                     <p class="lead">Linguagem</p>
                 </div>
                 <div class="col-sm-4 text-center user">
@@ -73,19 +74,11 @@
         </div>  
     </div>
     <div class="container">
-        <a name="" id="" class="" href="#" role="button"><i class="fas fa-arrow-left    "></i> Voltar</a>
+        <a name="" id="" class="" href="/ItemLanguages" role="button"><i class="fas fa-arrow-left    "></i> Voltar</a>
         
         <section>
-            <h1>Lorem ipsum</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum interdum dictum enim, id malesuada purus molestie et. Mauris ac viverra lorem. Nunc quis tristique odio, nec bibendum justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum elit leo, viverra vestibulum nisi at, auctor elementum lacus. Aliquam congue metus sed vestibulum gravida. Aenean tempus nisi vel metus lacinia, eu pellentesque est luctus.
-
-                    Duis imperdiet leo sapien. Integer quis varius est. Curabitur vel lectus euismod, finibus lacus id, molestie justo. Cras pulvinar turpis eget posuere posuere. Etiam laoreet nisl id dignissim egestas. Cras porttitor massa arcu, a porta sapien consectetur in. Donec ac sodales tortor. Integer a pharetra eros. Donec sit amet maximus eros. Phasellus justo sapien, lacinia eget luctus bibendum, fermentum nec neque.
-                    
-                    Aenean eget nunc vitae leo feugiat ultrices non et justo. Donec elit quam, posuere eu faucibus nec, vulputate ut tellus. Donec at consequat sem, in elementum libero. Praesent lectus nunc, facilisis sit amet maximus a, laoreet vitae lorem. Nam porttitor dictum fermentum. Nunc eros enim, maximus vel tincidunt a, aliquet non felis. Phasellus eget urna felis. Aliquam posuere ut erat sit amet posuere. Maecenas et mi ante. Curabitur faucibus purus eu nisi ornare, a rhoncus nulla luctus. Fusce turpis odio, porta in finibus ut, dictum in nibh. Nulla ac eleifend magna. Nunc vel risus in tellus feugiat pretium. Mauris finibus dolor lacus.
-                    
-                    Donec imperdiet efficitur lectus vel tincidunt. Proin tristique non felis a euismod. Mauris ut tellus scelerisque, vestibulum neque vitae, facilisis diam. Praesent et commodo ex, sed pellentesque tortor. Suspendisse facilisis quam eu neque dapibus, et mollis magna dictum. Ut ullamcorper bibendum quam ac interdum. Quisque nunc sem, vehicula eu malesuada quis, convallis et velit. Fusce ac semper purus. Pellentesque et ultrices orci. Sed volutpat, nunc vel bibendum porttitor, enim sapien dapibus arcu, vitae posuere erat est a metus. Pellentesque rhoncus porttitor velit eget feugiat. Quisque feugiat diam pharetra efficitur sagittis. Curabitur eu tortor ac leo vestibulum eleifend eu non arcu. Sed tempor porttitor diam id iaculis. Sed blandit massa in dui elementum, nec mollis neque mattis. Donec ac cursus libero.
-                    
-                    Integer aliquet nunc vel augue lacinia, quis tristique enim mollis. Mauris porta, lorem nec malesuada porta, ipsum metus varius metus, ut sagittis libero turpis ut lorem. Suspendisse nec fringilla quam. Vestibulum porttitor quis nulla id scelerisque. Aliquam tortor leo, blandit non dignissim in, consectetur vel sapien. Mauris nec magna sodales, facilisis tellus ac, interdum dui. Aliquam ipsum ipsum, facilisis id arcu non, commodo aliquet eros. Suspendisse felis mi, iaculis at fringilla id, ultrices at lorem. Aenean eu porttitor odio. Fusce dictum nunc erat, nec gravida nisi consequat sed.</p>
+            <h1 th:text="${solution.title}"></h1>
+            <p th:text="${solution.description}"> </p>
         </section>
     </div>
 <footer>
