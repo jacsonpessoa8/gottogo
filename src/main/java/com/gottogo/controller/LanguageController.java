@@ -17,11 +17,11 @@ public class LanguageController {
 	@Autowired
 	private LanguageRepository rep;
 	
-//	@RequestMapping(value="/formLang", method=RequestMethod.GET)
-//	public String form(){
-//		
-//		return "views/domain-admin/formLang";
-//	}
+	//	@RequestMapping(value="/formLang", method=RequestMethod.GET)
+	//	public String form(){
+	//		
+	//		return "views/domain-admin/formLang";
+	//	}
 	@RequestMapping(value="/formLang", method=RequestMethod.POST)
 	public String form(Language lang){
 		rep.save(lang);
