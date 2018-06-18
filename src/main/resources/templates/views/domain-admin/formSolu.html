@@ -13,7 +13,7 @@
 		Descrição: <input type="text" value="" name="description">
 		</br>
 		</br>
-		Language: <input type="text" value="" name="language">
+		Language: <input type="checkbox" id="lang" th:value="${lang}" th:text="${lang.nome}" th:field="*{langs}" />
 		<button type="submit">Salvar</button>
 	</form>
 	

@@ -79,7 +79,7 @@ tr:hover {
 					<p class="lead">Temos todos os tipos de linguagem para você</p>
 				</div>
 				<div class="col-sm-4 text-center user">
-					<img src="LogoGotToGo-04.png" height="70px">
+					<img src="images//LogoGotToGo-04.png" height="70px">
 					<div class="dropdown">
 						<p class="dropdown-toggle" id="dropdownMenuButton"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,7 +124,7 @@ tr:hover {
 				<tr th:each="lang : ${lang}">
 					<td th:text="${lang.id}"></td>
 					<td><a th:text="${lang.name}"
-					th:href="@{'/ItemLanguages/' + ${lang.id}}"></a></td>
+					th:href="@{'/ItemLanguages/' + ${lang.id} +'/items'}"></a></td>
 					<td>0</td>
 					<td>7</td>
 				</tr>
@@ -132,7 +132,7 @@ tr:hover {
 		</table>
 	</div>
 	<div class="bg-dark text-center text-light p-5 footer mt-5">
-		<img src="LogoGotToGo-02.png" height="80px;">
+		<img src="images/LogoGotToGo-02.png" height="80px;">
 		<h6>Ajudando programadores</h6>
 		<p>
 			<i class="fas fa-registered"></i> Todos os direitos reservados

@@ -21,7 +21,7 @@ public class Language implements Serializable  {
 	@NotNull
 	private String name;
 	@OneToMany(mappedBy="language")
-	private List<Solution> solutions;
+	private List<Solution> solutions;	
 	
 	public List<Solution> getSolutions() {
 		return solutions;
