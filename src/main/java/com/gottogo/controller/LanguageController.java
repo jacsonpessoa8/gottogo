@@ -41,23 +41,7 @@ public class LanguageController {
 		rep.save(lang);
 		return "redirect:/ItemLanguages";
 	}
-	
-	@RequestMapping(value="/ItemLanguages/{id}", method=RequestMethod.GET)
-	public ModelAndView edit(@PathVariable("id") long id){
-		Language lang = rep.findById(id);
-		ModelAndView mv = new ModelAndView("views/domain-admin/formLang");
-		mv.addObject("findById", lang);
-		return mv;
-	}
-	
-	@RequestMapping(value="/ItemLanguages/{id}",  method=RequestMethod.POST)
-	public String salvarAlteracao(@PathVariable("id") long id, @RequestParam("name") String name){
-		Language lang = rep.findById(id);
-		lang.setName(name);
-		rep.save(lang);
-		return "redirect:/ItemLanguages";
-	}
-	
+
 	@RequestMapping(value="/ItemLanguages/{id}/delete", method=RequestMethod.GET)
 	public String deletar(@PathVariable("id") long id){
 		Language lang = rep.findById(id);

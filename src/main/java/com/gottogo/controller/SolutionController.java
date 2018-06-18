@@ -25,13 +25,13 @@ public class SolutionController {
 	public SolutionRepository rep;
 	
 	@RequestMapping(value="/items", method=RequestMethod.GET)
-	public String listViewLanguages(){
+	public String ItemView(){
 	
 		return "view/ItemView";
 	}
 	
 	@RequestMapping(value="items/{id}", method=RequestMethod.GET)
-	public ModelAndView listViewLanguages(@PathVariable("id") long id){
+	public ModelAndView ItemViewLanguages(@PathVariable("id") long id){
 	
 		Language lang = repLang.findById(id);
 		ModelAndView mv = new ModelAndView("views/ItemView");
@@ -41,49 +41,13 @@ public class SolutionController {
 		mv.addObject("solution", solution);
 		return mv;
 	}
-//	@RequestMapping(value="/items/{id}", method=RequestMethod.GET)
-//	public ModelAndView edit(@PathVariable("id") long id){
-//		Language lang = repLang.findById(id);
-//		ModelAndView mv = new ModelAndView("views/ItemView");
-//		mv.addObject("findById", lang);
-//		return mv;
-//	}
-//	
-//	@RequestMapping(value="/items/{id}",  method=RequestMethod.POST)
-//	public String salvarAlteracao(@PathVariable("id") long id, @RequestParam("name") String name){
-//		Language lang = repLang.findById(id);
-//		lang.setName(name);
-//		repLang.save(lang);
-//		return "redirect:/ItemLanguages";
-//	}
-	
-	
-//	@RequestMapping(value="items/{id}", method=RequestMethod.GET)
-//	public ModelAndView listViewLanguages(@PathVariable("id") long id){
-//	
-//		Language lang = repLang.findById(id);
-//		ModelAndView mv = new ModelAndView("views/ItemView");
-//		mv.addObject("lang", lang);
-//		
-//		Iterable<Solution> solution = rep.findByLanguage(lang);
-//		mv.addObject("solution", solution);
-//		return mv;
-//	}
-//	
 
-//	
-//	@RequestMapping(value="/ItemLanguages/{id}/items", method=RequestMethod.GET)
-//	public ModelAndView form(){
-//		ModelAndView mv = new ModelAndView("ItemView");
-//		Solution solu = new Solution();
-//		return mv;
-//	}
-//	@RequestMapping("/ItemLanguages/{id}/items")
-//	public ModelAndView listViewSolution(@PathVariable("id") long id){
-//		ModelAndView mv = new ModelAndView("/ItemLanguages/{id}/items");
-//		Iterable<Solution> solu = rep.findAll();
-//		mv.addObject("solution", solu);
-//		return mv;
-//	}
-
+	
+	@RequestMapping(value="/items/{id}",  method=RequestMethod.POST)
+	public String salvarAlteracao(@PathVariable("id") long id, @RequestParam("name") String name){
+		Language lang = repLang.findById(id);
+		lang.setName(name);
+		repLang.save(lang);
+		return "redirect:/ItemLanguages";
+	}
 }
