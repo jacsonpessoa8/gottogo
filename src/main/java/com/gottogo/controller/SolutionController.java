@@ -24,11 +24,6 @@ public class SolutionController {
 	@Autowired
 	public SolutionRepository rep;
 	
-//	@RequestMapping(value="/items/{id}/solucao", method=RequestMethod.GET)
-//	public String ItemView(){
-//	
-//		return "view/ItemView";
-//	}
 	@RequestMapping(value="/items/solucao/{id}", method=RequestMethod.POST)
 	public String novoSolu(Solution solu, @PathVariable("id") long id){
 		Language lang = repLang.findById(id);
@@ -53,6 +48,6 @@ public class SolutionController {
 		Language lang = repLang.findById(id);
 		lang.setName(name);
 		repLang.save(lang);
-		return "redirect:/ItemLanguages";
+		return "redirect:/items/"+id;
 	}
 }
