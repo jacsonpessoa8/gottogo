@@ -10,5 +10,5 @@ public interface LanguageRepository extends CrudRepository<Language, Long> {
 	
 	Language findById(long id);
 	
-	Language findByName(String name);
+	List<Language> findByName(String name);
 }
