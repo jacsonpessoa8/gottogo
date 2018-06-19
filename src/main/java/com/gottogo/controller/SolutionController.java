@@ -50,4 +50,12 @@ public class SolutionController {
 		repLang.save(lang);
 		return "redirect:/items/"+id;
 	}
+	
+	@RequestMapping(value="/items/{id}/delete", method=RequestMethod.GET)
+	public String deletar(@PathVariable("id") long id){
+		Solution solu = rep.findById(id);
+		id = solu.getLanguage().getId();
+		rep.deleteById(solu.getId());
+		return "redirect:/items/"+id;
+	}
 }

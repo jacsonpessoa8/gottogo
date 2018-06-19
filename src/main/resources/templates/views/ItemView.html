@@ -169,6 +169,16 @@ tr:hover {
 							<button type="submit">Salvar</button>
 						</form>
 					</div>
+					<table class="table">
+						<tr>
+							<th>Nome</th>
+							<td>Excluir</td>
+						</tr>
+						<tr th:each="solution : ${solution}">
+							<th><a th:text="${solution.title}" th:href="@{'/tutorial/' + ${solution.id}}"></a></th>
+							<td><a th:href="@{'/items/' + ${solution.id} + '/delete'}"><i class="fas fa-trash"></i></a></td>
+						</tr>
+					</table>
 				</div>
 				<div class="modal-footer"></div>
 			</div>
