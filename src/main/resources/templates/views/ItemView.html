@@ -68,7 +68,9 @@ tr:hover {
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					<h3>Agora que você escolheu <span th:text="${lang.name}"></span>,</h3>
+					<h3>
+						Agora que você escolheu <span th:text="${lang.name}"></span>,
+					</h3>
 					<p class="lead">pode escolher um tutorial</p>
 				</div>
 				<div class="col-sm-4 text-center user">
@@ -147,8 +149,9 @@ tr:hover {
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="modelTitleId">Gerenciar Lista de
-						Projetos em  <span th:text="${lang.name}"></span></h4>
+					<h4 class="modal-title" id="modelTitleId">
+						Gerenciar Lista de Projetos em <span th:text="${lang.name}"></span>
+					</h4>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span> <i class="fas fa-times    "></i></span>
@@ -158,26 +161,14 @@ tr:hover {
 					<a name="" id="" class="btn btn-primary m-2" href="#" role="button"
 						data-dismiss="modal" data-toggle="modal" data-target="#AddItem"><i
 						class="fas fa-plus"></i> &nbspAdicionar</a>
-					<div class="row">
-						<form method="post">
-							Nome: <input type="text" th:value="${lang.name}" name="name">
+					<div class="container">
+					<h3>Editar pagina atual:</h3>
+						<form class="form-group" method="post">
+							Nome: <input class="form-control" type="text"
+								th:value="${lang.name}" name="name"> </br>
 							<button type="submit">Salvar</button>
 						</form>
 					</div>
-					<table class="table">
-						<tr>
-							<th>Nome</th>
-							<td>Editar</td>
-							<td>Excluir</td>
-						</tr>
-						<tr>
-							<th>Visualização de lista</th>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#AddItem"><i class="fas fa-pencil-alt"></i></a></td>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
-						</tr>
-					</table>
 				</div>
 				<div class="modal-footer"></div>
 			</div>
