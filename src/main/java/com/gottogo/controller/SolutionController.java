@@ -58,4 +58,15 @@ public class SolutionController {
 		rep.deleteById(solu.getId());
 		return "redirect:/items/"+id;
 	}
+	
+	@RequestMapping(value="/items/{id}/busca", method=RequestMethod.POST)
+	public ModelAndView busca(@PathVariable("id") long id, @RequestParam("buscaName") String title){
+		Language lang = repLang.findById(id);
+		ModelAndView mv = new ModelAndView("views/ItemView");
+		mv.addObject("lang", lang);
+		
+		Iterable<Solution> solution = rep.findByLanguageAndTitle(lang, title);
+		mv.addObject("solution", solution);
+		return mv;
+	}
 }

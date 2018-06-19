@@ -11,4 +11,7 @@ public interface SolutionRepository extends CrudRepository<Solution, Long> {
 	
 	Solution findById(long id);
 	List<Solution> findByLanguage(Language lang);
+	
+	List<Solution> findByLanguageAndTitle(Language lang, String title);
+	
 }
