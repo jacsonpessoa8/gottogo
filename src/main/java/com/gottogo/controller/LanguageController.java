@@ -41,7 +41,7 @@ public class LanguageController {
 	public String deletar(@PathVariable("id") long id){
 		Language lang = rep.findById(id);
 		rep.deleteById(lang.getId());
-		return "redirect:/ItemsLanguages";
+		return "redirect:/ItemLanguages";
 	}
 	
 }
