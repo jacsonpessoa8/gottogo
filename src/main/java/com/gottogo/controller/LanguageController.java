@@ -44,4 +44,12 @@ public class LanguageController {
 		return "redirect:/ItemLanguages";
 	}
 	
+	@RequestMapping(value="/ItemLanguages/busca", method=RequestMethod.POST)
+	public ModelAndView busca(@RequestParam("buscaName") String name){
+		Language lang = rep.findByName(name);
+		ModelAndView mv = new ModelAndView("views/ListViewLanguages");
+		mv.addObject("lang", lang);
+		return mv;
+	}
+	
 }

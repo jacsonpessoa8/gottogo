@@ -9,4 +9,6 @@ import com.gottogo.model.Language;
 public interface LanguageRepository extends CrudRepository<Language, Long> {
 	
 	Language findById(long id);
+	
+	Language findByName(String name);
 }
