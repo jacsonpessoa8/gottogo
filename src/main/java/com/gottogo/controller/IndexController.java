@@ -21,7 +21,7 @@ public class IndexController {
 		
 		return "redirect:/ItemLanguages";
 	}
-//	@RequestMapping("/ItemLanguages")
+//	@RequestMapping("/ItemLanguages")ds
 //	public ModelAndView listViewLanguages(){
 //		ModelAndView mv = new ModelAndView("views/ListViewLanguages");
 //		Iterable<Language> lang = repLang.findAll();
