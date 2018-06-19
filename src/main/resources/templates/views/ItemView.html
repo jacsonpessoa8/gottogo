@@ -68,9 +68,7 @@ tr:hover {
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					<h3>Agora que você escolheu</h3>
-					<h3 th:text="${lang.name}"></h3>
-					,
+					<h3>Agora que você escolheu <span th:text="${lang.name}"></span>,</h3>
 					<p class="lead">pode escolher um tutorial</p>
 				</div>
 				<div class="col-sm-4 text-center user">
@@ -95,7 +93,7 @@ tr:hover {
 		</div>
 	</div>
 	<div class="container">
-		<a name="" id="" class="" href="#" role="button"><i
+		<a name="" id="" class="" href="/ItemLanguages" role="button"><i
 			class="fas fa-arrow-left    "></i> Voltar</a>
 		<div class="form-group">
 			<div class="row">
@@ -150,7 +148,7 @@ tr:hover {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="modelTitleId">Gerenciar Lista de
-						Projetos em {LINGUAGEM}</h4>
+						Projetos em  <span th:text="${lang.name}"></span></h4>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span> <i class="fas fa-times    "></i></span>
@@ -179,34 +177,6 @@ tr:hover {
 							<td class="td"><a data-dismiss="modal" data-toggle="modal"
 								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
 						</tr>
-						<tr>
-							<th>Visualização de Item (E-commerce)</th>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#AddItem"><i class="fas fa-pencil-alt"></i></a></td>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
-						</tr>
-						<tr>
-							<th>Landpage</th>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#AddItem"><i class="fas fa-pencil-alt"></i></a></td>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
-						</tr>
-						<tr>
-							<th>Tratando arrays</th>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#AddItem"><i class="fas fa-pencil-alt"></i></a></td>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
-						</tr>
-						<tr>
-							<th>MVC</th>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#AddItem"><i class="fas fa-pencil-alt"></i></a></td>
-							<td class="td"><a data-dismiss="modal" data-toggle="modal"
-								data-target="#confirmDelete"><i class="fas fa-trash"></i></a></td>
-						</tr>
 					</table>
 				</div>
 				<div class="modal-footer"></div>
@@ -226,28 +196,32 @@ tr:hover {
 						<span> <i class="fas fa-times"></i></span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="title">Titulo</label> <input type="text"
-							class="form-control" name="titleInput" id="title"
-							aria-describedby="helpId" placeholder="Titulo do Tutorial">
-						<small id="helpId" class="form-text text-muted">O texto
-							que aparecerá na lista</small>
-					</div>
-					<div class="form-group">
-						<label for="content">Conteúdo do tutorial</label>
-						<textarea class="form-control" name="contentInput" id="content"
-							rows="5"></textarea>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">
-						<i class="fa fa-times" aria-hidden="true"></i> Cancelar
-					</button>
-					<button type="button" class="btn btn-primary">
-						<i class="fas fa-save"></i> Salvar
-					</button>
+				<div th:each="lang : ${lang}">
+					<form th:action="@{/items/solucao/} + ${lang.id}" method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="title">Titulo</label> <input type="text"
+									class="form-control" name="title" id="title"
+									aria-describedby="helpId" placeholder="Titulo do Tutorial">
+								<small id="helpId" class="form-text text-muted">O texto
+									que aparecerá na lista</small>
+							</div>
+							<div class="form-group">
+								<label for="content">Conteúdo do tutorial</label>
+								<textarea class="form-control" name="description" id="content"
+									rows="5"></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-secondary"
+								data-dismiss="modal">
+								<i class="fa fa-times" aria-hidden="true"></i> Cancelar
+							</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fas fa-save"></i> Salvar
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

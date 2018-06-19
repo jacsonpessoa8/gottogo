@@ -24,12 +24,18 @@ public class SolutionController {
 	@Autowired
 	public SolutionRepository rep;
 	
-	@RequestMapping(value="/items", method=RequestMethod.GET)
-	public String ItemView(){
-	
-		return "view/ItemView";
+//	@RequestMapping(value="/items/{id}/solucao", method=RequestMethod.GET)
+//	public String ItemView(){
+//	
+//		return "view/ItemView";
+//	}
+	@RequestMapping(value="/items/solucao/{id}", method=RequestMethod.POST)
+	public String novoSolu(Solution solu, @PathVariable("id") long id){
+		Language lang = repLang.findById(id);
+		solu.setLanguage(lang);
+		rep.save(solu);
+		return "redirect:/items/{id}";
 	}
-	
 	@RequestMapping(value="items/{id}", method=RequestMethod.GET)
 	public ModelAndView ItemViewLanguages(@PathVariable("id") long id){
 	
@@ -41,7 +47,6 @@ public class SolutionController {
 		mv.addObject("solution", solution);
 		return mv;
 	}
-
 	
 	@RequestMapping(value="/items/{id}",  method=RequestMethod.POST)
 	public String salvarAlteracao(@PathVariable("id") long id, @RequestParam("name") String name){
