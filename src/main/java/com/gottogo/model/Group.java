@@ -10,37 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Permition implements Serializable {
+public class Group implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
 	private String name;
+	private String description;
 	
-	@ManyToMany(mappedBy = "permitions")
+	@ManyToMany(mappedBy = "groups")
 	private List<User> users;
 	
-	@ManyToMany(mappedBy = "permitions")
-	private List<Group> groups;
-	
+	@ManyToMany
+	private List<Permition> permitions;
 
-	public List<User> getUsers() {
-		return users;
+	public List<Permition> getPermitions() {
+		return permitions;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-	public List<Group> getGroups() {
-		return groups;
-	}
-
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
+	public void setPermitions(List<Permition> permitions) {
+		this.permitions = permitions;
 	}
 
 	public Long getId() {
@@ -58,4 +49,23 @@ public class Permition implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<User> getUser() {
+		return users;
+	}
+
+	public void setUser(List<User> users) {
+		this.users = users;
+	}
+	
+	
+	
 }
