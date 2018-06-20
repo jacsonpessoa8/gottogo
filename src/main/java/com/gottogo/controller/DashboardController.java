@@ -37,8 +37,10 @@ public class DashboardController {
 		ModelAndView mv = new ModelAndView("views/Dashboard/dashboard");
 		Iterable<Language> permition = repLang.findAll();
 		Long quantLang = repLang.countLang();
+		Long quantSolu = repSolu.count();
 		mv.addObject("lang", permition);
 		mv.addObject("quantLang", quantLang);
+		mv.addObject("quantSolu", quantSolu);
 		return mv;
 	}
 	
