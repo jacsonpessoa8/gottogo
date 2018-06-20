@@ -76,7 +76,7 @@ tr:hover {
 					<div class="dropdown">
 						<p class="dropdown-toggle" id="dropdownMenuButton"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-user-circle" aria-hidden="true"></i> Lucas Hubert
+							<i class="fa fa-user-circle" aria-hidden="true"></i> <p th:text="${username}"></p>
 						</p>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="#"><i
@@ -84,24 +84,28 @@ tr:hover {
 						</div>
 					</div>
 				</div>
-	<div class="container">
-		<button class="btn btn-default btn-primary" data-toggle="collapse"
-			data-target="#demo"><i class="fas fa-cog"></i> &nbspEdit</button>
-		<div class="form-group">
-			<div id="demo" class="collapse">
-				<form method="post">
-					<h3>Nome:</h3>
-					<input class="form-control" type="text"
-						th:value="${solution.title}" name="title"> </br>
-					<h3>Descrição:</h3>
-					<textarea class="form-control" th:text="${solution.description}"
-						name="description"></textarea>
-					</br>
-					<button type="submit">Salvar</button>
-				</form>
-			</div>
-		</div>
-	</div>
+				<div th:if="${(auth.name) == 'ROLE_ADMIN'}">
+					<div class="container">
+						<button class="btn btn-default btn-primary" data-toggle="collapse"
+							data-target="#demo">
+							<i class="fas fa-cog"></i> &nbspEdit
+						</button>
+						<div class="form-group">
+							<div id="demo" class="collapse">
+								<form method="post">
+									<h3>Nome:</h3>
+									<input class="form-control" type="text"
+										th:value="${solution.title}" name="title"> </br>
+									<h3>Descrição:</h3>
+									<textarea class="form-control"
+										th:text="${solution.description}" name="description"></textarea>
+									</br>
+									<button type="submit">Salvar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

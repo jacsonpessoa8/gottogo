@@ -9,4 +9,8 @@ public class IndexController {
 	public String index(){
 		return "redirect:/ItemLanguages";
 	}
+	@RequestMapping("/login")
+	public String login(){
+		return "views/login";
+	}
 }

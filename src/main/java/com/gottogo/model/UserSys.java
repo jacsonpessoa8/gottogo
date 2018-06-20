@@ -1,6 +1,6 @@
 package com.gottogo.model;
 
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,14 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
-public class User implements Serializable {
+public class UserSys implements UserDetails {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private Long id;
+	private int id;
 	@NotNull
 	private String username;
 	@NotNull
@@ -25,37 +31,22 @@ public class User implements Serializable {
 	@NotNull
 	private String password;
 	@ManyToMany
-	private List<Group> groups;
-	@ManyToMany
 	private List<Permition> permitions;
-	private boolean isActive;
 	
-	public boolean isActive() {
-		return isActive;
-	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	public List<Group> getGroups() {
-		return groups;
-	}
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
 	public List<Permition> getPermitions() {
 		return permitions;
 	}
 	public void setPermitions(List<Permition> permitions) {
 		this.permitions = permitions;
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
@@ -67,9 +58,34 @@ public class User implements Serializable {
 		this.email = email;
 	}
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return (Collection<? extends GrantedAuthority>) this.permitions;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

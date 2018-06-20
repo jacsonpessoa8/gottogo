@@ -78,7 +78,7 @@ tr:hover {
 					<div class="dropdown">
 						<p class="dropdown-toggle" id="dropdownMenuButton"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-user-circle" aria-hidden="true"></i> Lucas Hubert
+							<i class="fa fa-user-circle" aria-hidden="true"></i> <p th:text="${username}"></p>
 						</p>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="#"><i
@@ -86,11 +86,13 @@ tr:hover {
 						</div>
 					</div>
 				</div>
-				<!-- area do moderador -->
-				<a name="" id="" class="btn btn-primary" href="#" role="button"
-					data-toggle="modal" data-target="#ListViewManager"><i
-					class="fas fa-cog"></i> &nbspGerenciar</a>
-				<!-- Fim area moderador -->
+				<div th:if="${(auth.name) == 'ROLE_ADMIN'}">
+					<!-- area do moderador -->
+					<a name="" id="" class="btn btn-primary" href="#" role="button"
+						data-toggle="modal" data-target="#ListViewManager"><i
+						class="fas fa-cog"></i> &nbspGerenciar</a>
+					<!-- Fim area moderador -->
+				</div>
 			</div>
 		</div>
 	</div>
@@ -162,7 +164,7 @@ tr:hover {
 						data-dismiss="modal" data-toggle="modal" data-target="#AddItem"><i
 						class="fas fa-plus"></i> &nbspAdicionar</a>
 					<div class="container">
-					<h3>Editar pagina atual:</h3>
+						<h3>Editar pagina atual:</h3>
 						<form class="form-group" method="post">
 							Nome: <input class="form-control" type="text"
 								th:value="${lang.name}" name="name"> </br>

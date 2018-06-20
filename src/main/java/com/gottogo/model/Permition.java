@@ -9,45 +9,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-public class Permition implements Serializable {
+public class Permition implements GrantedAuthority {
+	
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private Long id;
+	private int id;
 	
 	private String name;
 	
 	@ManyToMany(mappedBy = "permitions")
-	private List<User> users;
-	
-	@ManyToMany(mappedBy = "permitions")
-	private List<Group> groups;
+	private List<UserSys> userSys;
 	
 
-	public List<User> getUsers() {
-		return users;
+	public List<UserSys> getUsers() {
+		return userSys;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUsers(List<UserSys> userSys) {
+		this.userSys = userSys;
 	}
 
-	public List<Group> getGroups() {
-		return groups;
-	}
-
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
-
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -57,5 +49,11 @@ public class Permition implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return this.name;
 	}
 }

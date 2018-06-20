@@ -83,8 +83,9 @@ tr:hover {
 					<div class="dropdown">
 						<p class="dropdown-toggle" id="dropdownMenuButton"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-user-circle" aria-hidden="true"></i> Lucas Hubert
+							<i class="fa fa-user-circle" aria-hidden="true"></i><p th:text="${username}"></p>
 						</p>
+
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="#"><i
 								class="fas fa-sign-out-alt"></i>&nbsp&nbsp Sair</a>
@@ -92,10 +93,14 @@ tr:hover {
 					</div>
 				</div>
 				<br>
-				<!-- area do moderador -->
-				<a name="" id="" class="btn btn-primary" href="#" role="button"
-					data-toggle="modal" data-target="#ListViewManager"><i
-					class="fas fa-cog"></i> &nbspGerenciar</a>
+				<div th:if="${(auth.name) == 'ROLE_ADMIN'}">
+
+					<!-- area do moderador -->
+					<a name="" id="" class="btn btn-primary" href="#" role="button"
+						data-toggle="modal" data-target="#ListViewManager"><i
+						class="fas fa-cog"></i> &nbspGerenciar</a>
+
+				</div>
 				<!-- Fim area moderador -->
 			</div>
 		</div>
@@ -124,7 +129,7 @@ tr:hover {
 				<tr th:each="lang : ${lang}">
 					<td th:text="${lang.id}"></td>
 					<td><a th:text="${lang.name}"
-					th:href="@{'/items/' + ${lang.id}}"></a></td>
+						th:href="@{'/items/' + ${lang.id}}"></a></td>
 					<td>0</td>
 					<td>7</td>
 				</tr>
@@ -168,7 +173,9 @@ tr:hover {
 						</tr>
 						<tr th:each="lang : ${lang}">
 							<th th:text="${lang.name}"></th>
-							<td><a th:href="@{'/ItemLanguages/' + ${lang.id} + '/delete'}"><i class="fas fa-trash"></i></a></td>
+							<td><a
+								th:href="@{'/ItemLanguages/' + ${lang.id} + '/delete'}"><i
+									class="fas fa-trash"></i></a></td>
 						</tr>
 					</table>
 				</div>
@@ -234,10 +241,10 @@ tr:hover {
 						<div class="modal-body">
 							<div class="form-group">
 								<label for="title">Nome da Linguagem</label> <input type="text"
-									class="form-control" th:value="${langId.name}" name="nameinput" id="title"
-									aria-describedby="helpId" placeholder="Linguagem"> <small
-									id="helpId" class="form-text text-muted">O texto que
-									aparecerá na lista</small>
+									class="form-control" th:value="${langId.name}" name="nameinput"
+									id="title" aria-describedby="helpId" placeholder="Linguagem">
+								<small id="helpId" class="form-text text-muted">O texto
+									que aparecerá na lista</small>
 							</div>
 						</div>
 						<div class="modal-footer">
