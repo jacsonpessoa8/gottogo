@@ -13,7 +13,7 @@ public interface LanguageRepository extends CrudRepository<Language, Long> {
 	
 	List<Language> findByName(String name);
 	
-//	@Query("SELECT count(*) FROM language")
-//    int countInt();
+	@Query("select count (*) from #{#entityName}")
+	Long countLang();
     
 }
